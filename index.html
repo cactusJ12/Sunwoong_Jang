@@ -1,31 +1,305 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>LA TV Shows | Home</title>
-    <meta name="description" content="A Catalog of Shows Set in Los Angeles" />
-    <link rel="stylesheet" href="style.css" />
-    <script type="text/javascript" src="scripts.js"></script>
-  </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snap Scholar Stories</title>
 
-  <body>
-    <header class="main-header">
-      <h1 class="title">LA TV Shows</h1>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- ================================================== -->
+    <!-- Header & Navigation                            -->
+    <!-- ================================================== -->
+    <header class="site-header">
+        <nav class="main-nav">
+            <div class="logo-container">
+                <a href="#"> <img src="./images/icon2.png" alt="Snapchat Logo" class="header-logo"> </a>
+                 <span class="site-title-header">Snap Scholar Stories</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="https://www.snapacademies.com/sea">Home</a></li>
+                <li class="dropdown">
+                    <a href="https://www.snapacademies.com/about" class="dropbtn">About</a>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Blog</a></li>
+                        <!-- Add other About links here if needed -->
+                    </ul>
+                </li>
+                <li><a href="https://www.snapacademies.com/events">Events</a></li>
+                <li><a href="https://www.snapacademies.com/apply-now">Apply</a></li>
+                <li class="dropdown">
+                    <a href="https://www.snapacademies.com/sea" class="dropbtn">Academies</a>
+                    <ul class="dropdown-content">
+                        <li><a href="https://www.snapacademies.com/sda">Design</a></li>
+                        <li><a href="https://www.snapacademies.com/sea">Engineering</a></li>
+                        <li><a href="https://www.snapacademies.com/ssa">Storytelling</a></li>
+                        <li><a href="https://www.snapacademies.com/sla">Lens(AR)</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Lens Showcase</a> <!-- Use # if parent link isn't meant to navigate -->
+                    <ul class="dropdown-content">
+                        <li><a href="https://www.snapacademies.com/lens-showcase-2024-fall">Fall 2024</a></li>
+                        <li><a href="https://www.snapacademies.com/lens-showcase-2024-spring">Spring 2024</a></li>
+                        <li><a href="https://www.snapacademies.com/2023-challenge">2023</a></li>
+                        <li><a href="https://www.snapacademies.com/2022-challenge">2022</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Mobile Menu Toggle (Functionality not implemented in JS yet) -->
+            <div class="menu-toggle" aria-label="Toggle navigation menu">☰</div>
+        </nav>
     </header>
-    <div id="card-container"></div>
-    <div class="card" style="display: none">
-      <div class="card-content">
-        <h2>TV Show Title</h2>
-        <img src="" alt="TV Show Poster" />
-        <ul>
-          <li>Bullet Point 1</li>
-          <li>Bullet Point 2</li>
-          <li>Bullet Point 3</li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer">
-      <button onclick="quoteAlert();">Get A Quote!</button>
-      <button onclick="removeLastCard();">Remove A Card!</button>
-    </div>
-  </body>
+
+    <!-- ================================================== -->
+    <!-- Main Content Area                              -->
+    <!-- ================================================== -->
+    <main>
+        <!-- ================================================== -->
+        <!-- Filter/Sort Controls Section                   -->
+        <!-- ================================================== -->
+        <section class="controls">
+            <h2>Explore Our Stories</h2>
+            <div class="filter-sort-container">
+                <!-- Search Bar -->
+                <div class="control-group search-group">
+                    <label for="search-input">Search:</label>
+                    <input type="search" id="search-input" placeholder="Search by name or title...">
+                </div>
+
+                <!-- Filter Dropdowns -->
+                <div class="control-group filter-group">
+                    <label for="filter-week">Filter by Week:</label>
+                    <select id="filter-week">
+                        <option value="all">All Weeks</option>
+                        <!-- Options populated by JS -->
+                    </select>
+                </div>
+                <div class="control-group filter-group">
+                    <label for="filter-skill">Filter by Skill:</label>
+                    <select id="filter-skill">
+                        <option value="all">All Skills</option>
+                         <!-- Options populated by JS -->
+                    </select>
+                </div>
+
+                <!-- Sorting Options -->
+                <div class="control-group sort-group">
+                    <label for="sort-by">Sort By:</label>
+                    <select id="sort-by">
+                        <option value="default">Default (Week Asc)</option>
+                        <option value="name-asc">Name (A-Z)</option>
+                        <option value="name-desc">Name (Z-A)</option>
+                        <option value="week-asc">Week (Low-High)</option>
+                        <option value="week-desc">Week (High-Low)</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================================================== -->
+        <!-- Blog Entries Catalog & Grid                    -->
+        <!-- ================================================== -->
+        <section class="blog-catalog">
+            <h2>Scholar Stories</h2>
+            <!-- Grid Container for Blog Cards -->
+            <div id="blog-grid" class="grid-container">
+                <!-- Blog cards are inserted here by JavaScript -->
+            </div>
+
+            <!-- Pagination Controls -->
+            <div id="pagination-controls">
+                <button id="prevPage" class="btn">Previous</button>
+                <span id="pageInfo">Page 1 of 1</span>
+                <button id="nextPage" class="btn">Next</button>
+              </div>
+         </section>
+
+        <!-- ================================================== -->
+        <!-- Add New Entry Form Section                     -->
+        <!-- ================================================== -->
+        <section id="add-entry-section" class="form-section">
+            <h2>Add Your Story</h2>
+            <form id="add-entry-form">
+                <!-- Text Inputs -->
+                <div class="form-group">
+                    <label for="scholarName">Scholar Name:</label>
+                    <input type="text" id="scholarName" name="scholarName" required>
+                </div>
+                <div class="form-group">
+                    <label for="weekNumber">Week Number:</label>
+                    <input type="number" id="weekNumber" name="weekNumber" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="blogTitle">Blog Title:</label>
+                    <input type="text" id="blogTitle" name="blogTitle" placeholder="e.g., My Week 1 Journey" required>
+                </div>
+                <div class="form-group">
+                    <label for="highlights">Highlights:</label>
+                    <textarea id="highlights" name="highlights" rows="3" placeholder="Reflect the most memorable moments of this week..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="skillsLearned">Skills Learned (comma-separated):</label>
+                    <input type="text" id="skillsLearned" name="skillsLearned" placeholder="e.g., HTML, CSS, Collaboration" required>
+                </div>
+                 <div class="form-group">
+                    <label for="shoutouts">Shoutouts (optional):</label>
+                    <input type="text" id="shoutouts" name="shoutouts" placeholder="e.g., @MentorName, @FellowScholar">
+                 </div>
+                 <div class="form-group">
+                  <label for="quote">Quote of the day? (optional):</label> <!-- Corrected id/name -->
+                  <input type="text" id="quote" name="quote" placeholder="e.g., A journey of a thousand miles...">
+               </div>
+
+               <!-- Radio Button Groups -->
+                <fieldset class="form-group form-group-radio">
+                  <legend>Emoji Mood:</legend>
+                  <div class="mood-options-container">
+                      <label class="mood-option" for="mood-happy">
+                          <input type="radio" id="mood-happy" name="emojiMood" value="😊" required>
+                          😊 Happy
+                      </label>
+                      <label class="mood-option" for="mood-soso">
+                          <input type="radio" id="mood-soso" name="emojiMood" value="😐" required>
+                          😐 So-so
+                      </label>
+                      <label class="mood-option" for="mood-sad">
+                          <input type="radio" id="mood-sad" name="emojiMood" value="😞" required>
+                          😞 Sad
+                      </label>
+                  </div>
+              </fieldset>
+
+              <fieldset class="form-group form-group-radio">
+                <legend>Choose Card Background Color:</legend>
+                <div class="color-options-container">
+                    <label class="color-option" for="color-white">
+                        <input type="radio" id="color-white" name="cardColor" value="white" required checked>
+                        <span class="color-swatch" style="background-color: white; border: 1px solid #ccc;"></span> White
+                    </label>
+                    <label class="color-option" for="color-pink">
+                        <input type="radio" id="color-pink" name="cardColor" value="#FADADD" required>
+                        <span class="color-swatch" style="background-color: #FADADD;"></span> Pink
+                    </label>
+                    <label class="color-option" for="color-blue">
+                        <input type="radio" id="color-blue" name="cardColor" value="#A7C7E7" required>
+                        <span class="color-swatch" style="background-color: #A7C7E7;"></span> Blue
+                    </label>
+                    <label class="color-option" for="color-green">
+                        <input type="radio" id="color-green" name="cardColor" value="#C1E1C1" required>
+                        <span class="color-swatch" style="background-color: #C1E1C1;"></span> Green
+                    </label>
+                    <label class="color-option" for="color-yellow">
+                        <input type="radio" id="color-yellow" name="cardColor" value="#FDFD96" required>
+                        <span class="color-swatch" style="background-color: #FDFD96;"></span> Yellow
+                    </label>
+                    <label class="color-option" for="color-lavender">
+                        <input type="radio" id="color-lavender" name="cardColor" value="#D8BFD8" required>
+                        <span class="color-swatch" style="background-color: #D8BFD8;"></span> Lavender
+                    </label>
+                </div>
+            </fieldset>
+
+            <!-- Profile Image Selection -->
+            <fieldset class="form-group form-group-radio">
+                <legend>Choose Profile Picture:</legend>
+                <div class="image-options-container">
+                    <label class="image-option" for="pfp-cat">
+                        <input type="radio" id="pfp-cat" name="profileImage" value="./images/icon-cat.png" required>
+                        <img src="./images/icon-cat.png" alt="Cat Avatar" class="pfp-option-img">
+                         <span class="pfp-option-text">Cat</span>
+                    </label>
+                    <label class="image-option" for="pfp-dog">
+                        <input type="radio" id="pfp-dog" name="profileImage" value="./images/icon-dog.png" required>
+                        <img src="./images/icon-dog.png" alt="Dog Avatar" class="pfp-option-img">
+                         <span class="pfp-option-text">Dog</span>
+                    </label>
+                    <label class="image-option" for="pfp-bday">
+                        <input type="radio" id="pfp-bday" name="profileImage" value="./images/bitmoji-birthday.png" required>
+                        <img src="./images/bitmoji-birthday.png" alt="Birthday Bitmoji" class="pfp-option-img">
+                         <span class="pfp-option-text">Birthday</span>
+                    </label>
+                    <label class="image-option" for="pfp-panda">
+                        <input type="radio" id="pfp-panda" name="profileImage" value="./images/bitmoji-panda.png" required>
+                        <img src="./images/bitmoji-panda.png" alt="Panda Bitmoji" class="pfp-option-img">
+                         <span class="pfp-option-text">Panda</span>
+                    </label>
+                    <label class="image-option" for="pfp-thurs">
+                        <input type="radio" id="pfp-thurs" name="profileImage" value="./images/bitmoji-thursday.png" required>
+                        <img src="./images/bitmoji-thursday.png" alt="Thursday Bitmoji" class="pfp-option-img">
+                         <span class="pfp-option-text">Thursday</span>
+                    </label>
+                    <label class="image-option" for="pfp-rating">
+                        <input type="radio" id="pfp-rating" name="profileImage" value="./images/bitmoji-rating5.png" required>
+                        <img src="./images/bitmoji-rating5.png" alt="Rating Bitmoji" class="pfp-option-img">
+                         <span class="pfp-option-text">Rating</span>
+                    </label>
+                     <label class="image-option" for="pfp-stars">
+                        <input type="radio" id="pfp-stars" name="profileImage" value="./images/bitmoji-stars.png" required>
+                        <img src="./images/bitmoji-stars.png" alt="Stars Bitmoji" class="pfp-option-img">
+                         <span class="pfp-option-text">Stars</span>
+                    </label>
+                     <label class="image-option" for="pfp-best">
+                        <input type="radio" id="pfp-best" name="profileImage" value="./images/bitmoji-best.png" required>
+                        <img src="./images/bitmoji-best.png" alt="Best Bitmoji" class="pfp-option-img">
+                         <span class="pfp-option-text">Best</span>
+                    </label>
+                    <label class="image-option" for="pfp-roger"> 
+                        <input type="radio" id="pfp-roger" name="profileImage" value="./images/bitmoji-roger.png" required>
+                        <img src="./images/bitmoji-roger.png" alt="Roger Bitmoji" class="pfp-option-img">
+                         <span class="pfp-option-text">Rating</span>
+                    </label>
+                    <label class="image-option" for="pfp-hi">
+                        <input type="radio" id="pfp-hi" name="profileImage" value="./images/bitmoji-hi.png" required>
+                        <img src="./images/bitmoji-hi.png" alt="Hi Bitmoji" class="pfp-option-img">
+                         <span class="pfp-option-text">Rating</span>
+                    </label>
+                    <label class="image-option" for="pfp-rating"> <!-- Added missing Rating option -->
+                        <input type="radio" id="pfp-super" name="profileImage" value="./images/bitmoji-super.png" required>
+                        <img src="./images/bitmoji-super.png" alt="Super Bitmoji" class="pfp-option-img">
+                         <span class="pfp-option-text">Rating</span>
+                    </label>
+                    <label class="image-option" for="pfp-gogo"> <!-- Added missing Rating option -->
+                        <input type="radio" id="pfp-gogo" name="profileImage" value="./images/bitmoji-gogo.png" required>
+                        <img src="./images/bitmoji-gogo.png" alt="gogo Bitmoji" class="pfp-option-img">
+                         <span class="pfp-option-text">Rating</span>
+                    </label>
+                </div>
+            </fieldset>
+
+                <!-- Add entry -->
+                <div class="form-group">
+                    <button type="submit" class="btn">Add Entry</button>
+                </div>
+                <p id="form-message" class="form-message"></p>
+            </form>
+        </section>
+    </main>
+
+    <!-- ================================================== -->
+    <!-- Footer                                           -->
+    <!-- ================================================== -->
+    <footer class="site-footer">
+        <div class="footer-content">
+             <p class="powered-by-text">Powered by</p>
+             <img src="./images/icon1.png" alt="Powered by Snap and Next Shift Learning" class="powered-by-logo">
+             <p class="copyright">Copyright © 2023 Next Shift Learning, Inc. All rights reserved.</p>
+             <p class="contact-info">
+                 Questions? Contact <a href="mailto:snapacademies@nextshiftlearning.com">snapacademies@nextshiftlearning.com</a>
+             </p>
+        </div>
+    </footer>
+
+    <script src="blogData.js"></script>
+    <script src="scripts.js"></script>
+</body>
 </html>
