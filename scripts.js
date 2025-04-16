@@ -1,5 +1,3 @@
-// --- START OF FILE scripts.js ---
-
 document.addEventListener('DOMContentLoaded', () => {
 
   // --- DOM Elements ---
