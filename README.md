@@ -2,6 +2,10 @@
 
 A dynamic, interactive catalog website showcasing weekly stories, highlights, and skills from Snap Scholar participants. Built with vanilla HTML, CSS, and JavaScript, this project demonstrates fundamental data structures (arrays and objects) and DOM manipulation techniques.
 
+
+
+<img width="1385" alt="Screenshot 2025-04-24 at 3 56 22 PM" src="https://github.com/user-attachments/assets/fc606632-5876-4ee3-88f6-e081568c133b" />
+
 ---
 
 ## 📖 Table of Contents
